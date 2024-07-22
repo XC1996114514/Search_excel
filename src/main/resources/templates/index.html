@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Excel Search</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+<div class="container">
+    <h1>Search Excel Files</h1>
+    <p>日本語と英語を入力してください（大文字と小文字は区別されません）</p>
+    <p>Please enter Japanese and English (case-insensitive)</p>
+    <form action="/search" method="post" class="search-form">
+        <div class="form-group">
+            <label for="keyword">Keyword:</label>
+            <input type="text" name="keyword" id="keyword" placeholder="Enter keyword">
+            <button type="submit">Search</button>
+        </div><br>
+
+
+
+
+
+        <div class="form-group">
+            <label for="pageSize">Results per page:</label>
+            <select name="size" id="pageSize">
+                <option value="10">10</option>
+                <option value="20">20</option>
+                <option value="30">30</option>
+                <option value="40">40</option>
+                <option value="50">50</option>
+            </select>
+        </div>
+    </form>
+</div>
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+

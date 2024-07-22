@@ -1,0 +1,11 @@
+1: use
+put your excel under the ' excel' files
+src/main/java/clean_excel_doc.java to clean the EXCEL under the \excel
+
+2: run
+
+src/main/java/com/example/excelfileviewer/ExcelFileViewerApplication.java
+
+3:website
+
+http://localhost:8080/

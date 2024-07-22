@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Search Results</title>
+    <link rel="stylesheet" href="/style.css">
+</head>
+<body>
+<h1>Search Results</h1>
+<p>Search completed in <span th:text="${searchTime}"></span> ms.</p>
+<p>Total results: <span th:text="${totalResults}"></span></p>
+<p>Current page: <span th:text="${currentPage}"></span> of <span th:text="${totalPages}"></span></p>
+
+<div>
+    <ul>
+        <li th:each="result : ${results}">
+            <p><strong>Source:</strong> <span th:text="${result['source']}"></span></p>
+            <table border="1">
+                <tr>
+                    <td>Matched Cell Header</td>
+                    <td th:text="${result['matchedCellHeader']}"></td>
+                </tr>
+                <tr>
+                    <td>Matched Cell</td>
+                    <td th:text="${result['matchedCell']}"></td>
+                </tr>
+                <tr>
+                    <td>Right Cell</td>
+                    <td th:text="${result['rightCell']}"></td>
+                </tr>
+                <tr>
+                    <td>Bottom Cell</td>
+                    <td th:text="${result['bottomCell']}"></td>
+                </tr>
+            </table>
+        </li>
+    </ul>
+</div>
+
+<div>
+    <span th:if="${currentPage > 1}">
+        <a th:href="@{/search(keyword=${keyword}, page=1, size=${pageSize})}">First</a>
+        <a th:href="@{/search(keyword=${keyword}, page=${currentPage - 1}, size=${pageSize})}">Previous</a>
+    </span>
+    <span th:if="${currentPage < totalPages}">
+        <a th:href="@{/search(keyword=${keyword}, page=${currentPage + 1}, size=${pageSize})}">Next</a>
+        <a th:href="@{/search(keyword=${keyword}, page=${totalPages}, size=${pageSize})}">Last</a>
+    </span>
+</div>
+
+<div>
+    <form action="/search" method="get">
+        <input type="hidden" name="keyword" th:value="${keyword}">
+        <input type="hidden" name="size" th:value="${pageSize}">
+        <label for="pageSelect">Go to page:</label>
+        <select id="pageSelect" name="page">
+            <option th:each="pageNum : ${#numbers.sequence(1, totalPages)}" th:value="${pageNum}" th:text="${pageNum}"></option>
+        </select>
+        <button type="submit">Go</button>
+    </form>
+</div>
+
+<a href="/">Back</a>
+</body>
+</html>
+
+
+
+
+
